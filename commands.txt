@@ -1,0 +1,124 @@
+npm install mqtt -q 
+
+// Npm instalará el paquete MQTT.js de manera global (-g), por lo que a partir de entonces
+es crear código utilizando dicha librería pero además, con la instalación de la librería se
+instala un paquete de herramientas por consola //
+
+//
+Además de poder utilizar el comando mqtt también se tienen disponibles los comandos
+mqtt_pub y mqtt_sub, que sería equivalente a utilizar mqtt publish y mqtt subscribe respectivamente.
+Un ejemplo de suscripción a un tópico sería:
+//
+
+
+
+1. Para crear el broker, se uso el comando en el directorio C:\Program Files\mosquitto mosquitto.exe -v
+2.  se prueba que este funcioanndo mediante un mqtt_sub -t test para subscribirse al test
+3. se utiliza mqtt_pub -t test- m "mensaje de prueba" para enviar un mensaje de prueba y se valida que en la terminal subscrita se refleje
+4. En el archivo de configuracion mosquitto.conf se deshabilita la conexion anonima mediante la modificacion de la linea "allow anonymous" setteandola como false
+5. para crear el usuario se crea mediante mosquitto_passwd -c | -D passwordfile username
+donde -c es para crear y -D es para eliminar, -U para upgradear passwordfile de ser plain text a hashed!
+con mosquitto_passwd -b passwordfile username clave se puede agregar mas usuarios, si no, borra los que antes estaban
+6. en el mosquitto.conf se procede a agregar la ruta del archivo de passwords en password_file rutaarchivo
+
+
+C:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red
+
+creacion de access lists (se deben crear en un archivo aparte) 
+
+topic [read\write\readwrite\ <topic>
+topic [read\write\readwrite\ <topic> user <username>
+
+pattern [read\write\readwrite] <topic>
+
+pattern write casa/%u/salon  significa que %u es el usuario por ejemplo <user> solamente podra publicar el resto solamente ubscribirse
+
+se agrega la lista de control de acceso mediante el archivo de configuraciones
+
+para agregar seguridad SSL/TLS
+
+se procede a instalar openssl para windows y se agrega las varaibles de entorno
+
+>set OPENSSL_CONF=C:\Program Files\OpenSSL-Win64\bin\openssl.cfg
+>set Path= C:\Program Files\OpenSSL-Win64\bin
+
+openssl version para validar que este instalado
+<password>
+
+se procedio a usar el comando 
+openssl req -new -x509 -days 30 -extensions v3_ca -keyout ca.key -out ca.crt  para crear el ente certificador y la llave publica
+
+se procede a crear la clave privada openssl genrsa -des3 -out server.key 2048
+
+se crea la peticion de firma del certificado con la clave privada creada openssl req -out server.csr -key server.key -new
+
+para que la entidad certificadora firme y genere el certificado del servidor se usa el comando:
+openssl x509 -req -days <duration> -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial
+-out server.crt
+
+se procede a agregar los archivos y habilitar las opciopnes en las configuraciones del mosquitto.cfg
+
+# cafile and capath define methods of accessing the PEM encoded
+# Certificate Authority certificates that will be considered trusted when
+# checking incoming client certificates.
+# cafile defines the path to a file containing the CA certificates.
+# capath defines a directory that will be searched for files
+# containing the CA certificates. For capath to work correctly, the
+# certificate files must have ".crt" as the file ending and you must run
+# "openssl rehash <path to capath>" each time you add/remove a certificate.
+cafile  certfile C:\Program Files\mosquitto\ca_certificates\ca.crt
+
+# Path to the PEM encoded server certificate.
+ certfile C:\Program Files\mosquitto\certs\server.crt
+
+# Path to the PEM encoded keyfile.
+ keyfile  certfile C:\Program Files\mosquitto\certs\server.key
+
+ y el puerto port 8883 (standard SSL/TKS en MQTT)
+
+ listener 8883
+
+ mosquitto -c mosquitto.conf -v
+
+ se instalo node-red  para poder visualizar el broker de una forma mas grafica
+
+
+ mqtt_pub -t casa -m "mensaje" -p 8883 -u <user> -P <password>
+mqtt_sub -t casa -p 8883 -u <user> -P <password>
+
+
+casa/#
+	casa/cocina
+		cocina/ventanas
+		cocina/luces
+	casa/habitacion
+		habitacion/boton
+		habitacion/persianas
+		habitacion/luces
+	casa/salon
+		salon/termostato (write/read)
+		salon/movimiento
+		salon/luces
+		
+
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt cocina_luces <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt cocina_ventana <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt habitacion_boton <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt habitacion_persianas <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt habitacion_luces <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt salon_termostato <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt salon_movimiento <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt salon_luces <password>
+mosquitto_passwd -b c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt casa_principal <password>
+
+
+
+
+mosquitto_passwd -D c:\Users\Andres\Documents\VisualStudioProjects\mosquitto-mqtt-node-red\users\users.txt <user>
+
+
+
+
+
+
+

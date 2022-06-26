@@ -1,0 +1,9 @@
+cocina_luces:$7$101$/oYoeRBeDLhwnxDd$KinK2NPd6bCIc5REDapQTsJMF3wKp3R2IG9AaEtwVZD456ucHTBSPiS+IKSKoBQH69BbDsEStWzzbdJOxngUaA==
+cocina_ventana:$7$101$NCpKh1CZKkuVZ8p4$vkUMNSCR2mGnOFzyZhgs2lEv0D1o1Hn+tScUIiPkEaN/RpclrZ1nvhWQ9fXWMVQB+8GSOrvZu/jG1oWG6Ypcow==
+habitacion_boton:$7$101$iQPFX+5kbkz3r+uc$MvkUdBJAJeeUtktonIuR10Ub1Pm2+wDhpYWFc0FNXPYgsyghYSRZ1fzGWvdzkWL1Ud8/9PmnAVW0oaAoHlVZ4g==
+habitacion_persianas:$7$101$dWQERqJr+AzxhGoT$+dpgrEF2SgFmrXNjoGqSh5luBmbGKJOCAawk5inrL3IEOSMKB39xWn7rO1oBjHa0ccUG3OgND5SGWC0S0ZfLbQ==
+habitacion_luces:$7$101$oyJjEMefXtJxOw0D$qMtOs+fu36eI2xYFQddmyUe9f5KePQ1RUmGcejwl6biYBNeqojo3IOi2S3u+KCI/SGO1tEfyhgklB+WJ+o0fWA==
+salon_termostato:$7$101$gw/YOfo9ULGzOJDf$fjoeHq9qFKLWe6thw8shUn+8oXotlwdTzYuBZCONLcUfBnRoNjd9UeKpjnrdeZ2ltB5YKCbUWWQB6HlP8lyilw==
+salon_movimiento:$7$101$3vND/pzGbRcJ97d3$f4tBLQlhtYArgkdzgswwLs79Th0PFBsB3JCVSZUy2d+vO8MXuGOepN44UhmOX1HlGtxw9AYo1tV4bsjYC2VR3g==
+salon_luces:$7$101$eRjyvWkSQmGQkzTZ$MTf/KCErsSJZ+zKzobUEwMYjD1lyc9yXrDvCI+11JtY/JQ010Sfq+U6jYnjIhKwVJiYjDFnGrqfdlpbq11nV3Q==
+casa_principal:$7$101$ZRogeirfqH6ao8Js$IwjmoUbaUjwadq2uu36UV+c4VVkMdKIE93YDXQY7Gi09Q8kRCgVRH48GgmxxZ7KboMu7mHAtiu/O3e196tNrtA==

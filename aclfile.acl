@@ -1,0 +1,35 @@
+#Usuario Principal
+user casa_principal
+topic readwrite #
+
+#user cocina_luces
+user cocina_luces
+topic write casa/cocina/luces
+
+#user cocina_ventana
+user cocina_ventana
+topic write casa/cocina/ventanas
+
+#user habitacion_boton
+user habitacion_boton
+topic write casa/habitacion/boton
+
+#user habitacion_persianas
+user habitacion_persianas
+topic write casa/habitacion/persianas
+
+#user habitacion_luces
+user habitacion_luces
+topic write casa/habitacion/luces
+
+#user salon_luces
+user salon_luces
+topic write casa/salon/luces
+
+#user salon_movimiento
+user salon_movimiento
+topic write casa/salon/movimiento
+
+#user salon_termostato
+user salon_termostato
+topic readwrite casa/salon/temperatura
